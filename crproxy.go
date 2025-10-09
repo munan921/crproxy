@@ -20,7 +20,6 @@ import (
 	"github.com/docker/distribution/registry/client/transport"
 	storagedriver "github.com/docker/distribution/registry/storage/driver"
 	"github.com/wzshiming/geario"
-	"github.com/wzshiming/hostmatcher"
 	"github.com/wzshiming/httpseek"
 	"github.com/wzshiming/lru"
 )
@@ -79,7 +78,6 @@ type CRProxy struct {
 	simpleAuthUserpassFunc  func(r *http.Request, userinfo *url.Userinfo) bool
 	tokenURL                string
 	tokenAuthForceTLS       bool
-	matcher                 hostmatcher.Matcher
 
 	defaultRegistry         string
 	overrideDefaultRegistry map[string]string
