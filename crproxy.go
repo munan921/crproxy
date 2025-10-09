@@ -640,6 +640,11 @@ func (c *CRProxy) directResponse(rw http.ResponseWriter, r *http.Request, info *
 		return
 	}
 
+	if resp.StatusCode == http.StatusTooManyRequests {
+		c.errorResponse(rw, r, fmt.Errorf("origin response 429"))
+		return
+	}
+
 	resp.Header.Del("Docker-Ratelimit-Source")
 
 	if resp.StatusCode == http.StatusOK {
